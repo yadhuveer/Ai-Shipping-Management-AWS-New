@@ -53,7 +53,7 @@ export class UserController{
                 const pasCheck = await bcrypt.compare(password,result.password);
 
             if(pasCheck){
-                const token = jwt.sign({userId:result._id},process.env.JWT_SECRET,{expiresIn:'9h',})
+                const token = jwt.sign({userId:result._id},process.env.JWT_SECRET,{ httpOnly: true,secure: false,sameSite: "None", expiresIn:'9h',})
                 res.cookie('token', token, { maxAge: 30 * 60 * 1000 });
                 return res.status(200).json({message:"LogIn sucessfull"});
             }else{
