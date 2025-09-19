@@ -4,8 +4,7 @@ services:
   mongo:
     image: mongo:6.0
     container_name: ship-mongo
-    ports:
-      - "27018:27017"
+    
     volumes:
       - mongo-data:/data/db
 
@@ -27,16 +26,14 @@ services:
     env_file:
       - ./ai-ship-planner/.env.docker
     container_name: ship-ml
-    ports:
-      - "9000:9000"
+    
     depends_on:
       - redis   
 
   redis:
     image: redis:7.0
     container_name: ship-redis
-    ports:
-      - "6379:6379"
+    
 
 volumes:
   mongo-data:
