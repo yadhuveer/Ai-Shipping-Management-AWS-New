@@ -12,7 +12,7 @@ services:
   backend:
     build: ./AI-ShipPlanner_MERN_Backend
     env_file:
-    - ./AI-ShipPlanner_MERN_Backend/.env.docker
+    - ./AI-ShipPlanner_MERN_Backend/.env
     container_name: ship-backend
     ports:
       - "8000:8000"
@@ -24,7 +24,7 @@ services:
   ml:
     build: ./ai-ship-planner
     env_file:
-      - ./ai-ship-planner/.env.docker
+      - ./ai-ship-planner/.env
     container_name: ship-ml
     
     depends_on:
