@@ -71,7 +71,11 @@ export class UserController{
 
     async Logout(req,res,next){
         try{
-              res.clearCookie('token');
+              res.clearCookie('token', { 
+            httpOnly: true, 
+            secure: true, 
+            sameSite: 'None' 
+        });
         
              console.log("token is cleared")
               return res.status(200).json({ message: "Logout successful" });
