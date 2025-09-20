@@ -32,7 +32,7 @@ server.use(express.urlencoded({extended:true}));
 });*/
 
 server.use(cors({
-  origin: "http://localhost:3000",  
+  origin:["http://localhost:3000", "https://13.233.141.243"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true                
 }));
