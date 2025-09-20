@@ -54,7 +54,7 @@ export class UserController{
 
             if(pasCheck){
                 const token = jwt.sign({userId:result._id},process.env.JWT_SECRET,{ expiresIn:'9h',})
-                res.cookie('token', token, { httpOnly: true,secure: false,sameSite: "Lax", maxAge: 30 * 60 * 1000 });
+                res.cookie('token', token, { httpOnly: true,secure: true,sameSite: "None", maxAge: 30 * 60 * 1000 });
                 return res.status(200).json({message:"LogIn sucessfull"});
             }else{
                 return res.status(403).json({message:"User doesn't exsixt"});
