@@ -31,19 +31,7 @@ services:
       - redis   
 
 
-  nginx:
-    image: nginx:latest
-    container_name: ship-nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./certs:/etc/ssl/certs
-      - ./certs:/etc/ssl/private
-    depends_on:
-      - backend
-
+  
   redis:
     image: redis:7.0
     container_name: ship-redis
