@@ -14,8 +14,8 @@ services:
     env_file:
     - ./AI-ShipPlanner_MERN_Backend/.env
     container_name: ship-backend
-    ports:
-      - "8000:8000"
+    expose:                       
+      - "8000"
     
     depends_on:
       - mongo
@@ -29,6 +29,20 @@ services:
     
     depends_on:
       - redis   
+
+
+  nginx:
+    image: nginx:latest
+    container_name: ship-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./certs:/etc/ssl/certs
+      - ./certs:/etc/ssl/private
+    depends_on:
+      - backend
 
   redis:
     image: redis:7.0
